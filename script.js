@@ -31,6 +31,16 @@ const removeBook =(id)=> {
   })
 }
 
-console.log(books)
-removeBook(2)
-console.log(books)
+const booksSection = document.getElementById('books')
+
+books.forEach(book => {
+  const bookElement = document.createElement('div');
+  bookElement.innerHTML = `
+    <p>${book.title}</p>
+    <p>${book.author}</p>
+    <button>Remove</button>
+    <hr>
+  `;
+  
+  booksSection.appendChild(bookElement);
+})
