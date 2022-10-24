@@ -1,16 +1,25 @@
 const books =[
   {
-  name:"JavaScript",
+  title:"JavaScript",
   author:"Zainab",
 },
 {
-  name:"Html",
+  title:"Html",
   author:"Zainab",
 },
 {
-  name:"Ruby",
+  title:"Ruby",
   author:"Zainab",
 },
-]
+];
+
+const addBook = (title, author) => {
+  let book = {
+    title: title,
+    author: author
+  }
+
+  books.push(book);
+}
 
 
