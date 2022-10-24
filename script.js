@@ -37,10 +37,11 @@ const booksSection = document.getElementById('books')
 
 books.forEach(book => {
   const bookElement = document.createElement('div');
+  bookElement.id = `book-${book.id}`
   bookElement.innerHTML = `
     <p>${book.title}</p>
     <p>${book.author}</p>
-    <button>Remove</button>
+    <button class="remove">Remove</button>
     <hr>
   `;
   
@@ -56,9 +57,20 @@ addBtn.addEventListener('click',()=>{
   bookElement.innerHTML = `
     <p>${newBook.title}</p>
     <p>${newBook.author}</p>
-    <button>Remove</button>
+    <button class="remove">Remove</button>
     <hr>
   `;
-  
+
   booksSection.appendChild(bookElement);
 })
+
+let removeButtons = document.getElementsByClassName('remove')
+for (let i = 0; i < removeButtons.length; i++) {
+  removeButtons[i].addEventListener('click', () => {
+    removeBook(i);
+    const bookID = document.getElementById(`book-${i}`);
+    if (bookID.parentNode) {
+      bookID.parentNode.removeChild(bookID);
+    };
+  });
+}
