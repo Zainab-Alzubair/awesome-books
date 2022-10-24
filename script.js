@@ -23,6 +23,7 @@ const addBook = (title, author) => {
   }
 
   books.push(book);
+  return book;
 }
 
 const removeBook =(id)=> {
@@ -31,6 +32,7 @@ const removeBook =(id)=> {
   })
 }
 
+
 const booksSection = document.getElementById('books')
 
 books.forEach(book => {
@@ -38,6 +40,22 @@ books.forEach(book => {
   bookElement.innerHTML = `
     <p>${book.title}</p>
     <p>${book.author}</p>
+    <button>Remove</button>
+    <hr>
+  `;
+  
+  booksSection.appendChild(bookElement);
+})
+
+const addBtn = document.getElementById('add-btn')
+addBtn.addEventListener('click',()=>{
+  const bookTitle = document.getElementById('title').value
+  const bookAuthor = document.getElementById('author').value
+  let newBook = addBook(bookTitle,bookAuthor)
+  const bookElement = document.createElement('div');
+  bookElement.innerHTML = `
+    <p>${newBook.title}</p>
+    <p>${newBook.author}</p>
     <button>Remove</button>
     <hr>
   `;
