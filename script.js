@@ -1,7 +1,16 @@
 const uid = () => Date.now().toString(36) + Math.random().toString(36).substr(2);
 
 const booksSection = document.getElementById('library');
-const addBtn = document.getElementById('add-btn');
+const form = document.getElementById('form-id');
+const empty = document.getElementById('empty-id');
+
+function showEmpty() {
+  empty.classList.replace('hide', 'show');
+}
+
+function hideEmpty() {
+  empty.classList.replace('show', 'hide');
+}
 
 let library = [];
 
@@ -27,10 +36,19 @@ const book2 = new Book(uid(), 'JavaScript', 'Jane');
 library.push(book1);
 library.push(book2);
 
+function toggleEmpty() {
+  if (!library.length) {
+    showEmpty();
+  } else {
+    hideEmpty();
+  }
+}
+
 const addRemoveListener = (book) => {
   document.getElementById(`remove-${book.id}`).addEventListener('click', (e) => {
     e.preventDefault();
     book.removeBook();
+    toggleEmpty();
     const bookID = document.getElementById(`book-${book.id}`);
     if (bookID.parentNode) {
       bookID.parentNode.removeChild(bookID);
@@ -48,6 +66,7 @@ const appendBook = (book) => {
   `;
 
   booksSection.appendChild(bookElement);
+  toggleEmpty();
 };
 
 library.forEach((book) => {
@@ -55,12 +74,15 @@ library.forEach((book) => {
   addRemoveListener(book);
 });
 
-addBtn.addEventListener('click', (e) => {
+form.addEventListener('submit', (e) => {
   e.preventDefault();
-  const bookTitle = document.getElementById('title').value;
-  const bookAuthor = document.getElementById('author').value;
-  const book = new Book(uid(), bookTitle, bookAuthor);
+  const bookTitle = document.getElementById('title');
+  const bookAuthor = document.getElementById('author');
+  const book = new Book(uid(), bookTitle.value, bookAuthor.value);
   book.addBook();
   appendBook(book);
   addRemoveListener(book);
+  localStorage.removeItem('data');
+  bookAuthor.value = '';
+  bookTitle.value = '';
 });

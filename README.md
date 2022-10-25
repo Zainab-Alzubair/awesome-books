@@ -8,13 +8,13 @@
 - CSS
 - Javascript
 
+## Live Demo
+
+![image](https://user-images.githubusercontent.com/37116322/197812247-6b16d25a-3d0f-44cc-9432-e87be7d30494.png)
+
 ## Getting Started
 
 To get a local copy up and running follow these simple steps.
-
-## Live Demo
-
-https://zainab-alzubair.github.io/awesome-books/
 
 ### Prerequisites
 
@@ -31,6 +31,10 @@ https://zainab-alzubair.github.io/awesome-books/
 ### Usage
 
 - Open the index file and enjoy
+
+### Deployment
+
+- [Live Demo Link](https://zainab-alzubair.github.io/awesome-books/)
 
 ## Authors
 

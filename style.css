@@ -33,6 +33,24 @@ h2 {
   background-color: #fff;
 }
 
+#library h2 {
+  color: #000;
+  font-size: 14px;
+}
+
+.empty {
+  justify-content: space-around;
+  align-items: center;
+}
+
+.show {
+  display: flex;
+}
+
+.hide {
+  display: none;
+}
+
 .book {
   display: flex;
   justify-content: space-between;
