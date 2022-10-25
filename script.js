@@ -3,40 +3,29 @@ const uid = () => Date.now().toString(36) + Math.random().toString(36).substr(2)
 const booksSection = document.getElementById('books');
 const addBtn = document.getElementById('add-btn');
 
-let books = [
-  {
-    id: uid(),
-    title: 'Lorem ipsum',
-    author: 'Testeroo Testyy',
-  },
-  {
-    id: uid(),
-    title: 'Second book',
-    author: 'Testeroo Testyy',
-  },
+let books = [];
 
-];
+class Books {
+  constructor(id , title, author){
+    this.id = id;
+    this.title = title;
+    this.author = author;
+  }
 
-const addBook = (id, title, author) => {
-  const book = {
-    id,
-    title,
-    author,
+   addBook = () => {
+    books.push(this);
   };
+  
+   removeBook = () => {
+    books = books.filter((book) => book.id !== this.id);
+  };
+}
 
-  books.push(book);
-  return book;
-};
-
-const removeBook = (id) => {
-  books = books.filter((book) => book.id !== id);
-};
-
-const addRemoveListener = (id) => {
-  document.getElementById(`remove-${id}`).addEventListener('click', (e) => {
+const addRemoveListener = (book) => {
+  document.getElementById(`remove-${book.id}`).addEventListener('click', (e) => {
     e.preventDefault();
-    removeBook(id);
-    const bookID = document.getElementById(`book-${id}`);
+    book.removeBook();
+    const bookID = document.getElementById(`book-${book.id}`);
     if (bookID.parentNode) {
       bookID.parentNode.removeChild(bookID);
     }
@@ -56,16 +45,12 @@ const appendBook = (book) => {
   booksSection.appendChild(bookElement);
 };
 
-books.forEach((book) => {
-  appendBook(book);
-  addRemoveListener(book.id);
-});
-
 addBtn.addEventListener('click', (e) => {
   e.preventDefault();
   const bookTitle = document.getElementById('title').value;
   const bookAuthor = document.getElementById('author').value;
-  const newBook = addBook(uid(), bookTitle, bookAuthor);
-  appendBook(newBook);
-  addRemoveListener(newBook.id);
+  let book = new Books(uid(), bookTitle, bookAuthor);
+  book.addBook();
+  appendBook(book);
+  addRemoveListener(book);
 });
