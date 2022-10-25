@@ -12,6 +12,10 @@
 
 To get a local copy up and running follow these simple steps.
 
+## Live Demo
+
+https://zainab-alzubair.github.io/awesome-books/
+
 ### Prerequisites
 
 - Use `git clone` to clone the repository using the HTTPS link into your local machine
