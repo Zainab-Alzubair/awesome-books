@@ -1,42 +1,37 @@
 const uid = () => Date.now().toString(36) + Math.random().toString(36).substr(2);
 
-const booksSection = document.getElementById('books');
+const booksSection = document.getElementById('library');
 const addBtn = document.getElementById('add-btn');
 
-let books = [
-  {
-    id: uid(),
-    title: 'Lorem ipsum',
-    author: 'Testeroo Testyy',
-  },
-  {
-    id: uid(),
-    title: 'Second book',
-    author: 'Testeroo Testyy',
-  },
+let library = [];
 
-];
+class Book {
+  constructor(id, title, author) {
+    this.id = id;
+    this.title = title;
+    this.author = author;
+  }
 
-const addBook = (id, title, author) => {
-  const book = {
-    id,
-    title,
-    author,
+  addBook = () => {
+    library.push(this);
   };
 
-  books.push(book);
-  return book;
-};
+  removeBook = () => {
+    library = library.filter((book) => book.id !== this.id);
+  };
+}
 
-const removeBook = (id) => {
-  books = books.filter((book) => book.id !== id);
-};
+const book1 = new Book(uid(), 'Html', 'Jack');
+const book2 = new Book(uid(), 'JavaScript', 'Jane');
 
-const addRemoveListener = (id) => {
-  document.getElementById(`remove-${id}`).addEventListener('click', (e) => {
+library.push(book1);
+library.push(book2);
+
+const addRemoveListener = (book) => {
+  document.getElementById(`remove-${book.id}`).addEventListener('click', (e) => {
     e.preventDefault();
-    removeBook(id);
-    const bookID = document.getElementById(`book-${id}`);
+    book.removeBook();
+    const bookID = document.getElementById(`book-${book.id}`);
     if (bookID.parentNode) {
       bookID.parentNode.removeChild(bookID);
     }
@@ -46,26 +41,26 @@ const addRemoveListener = (id) => {
 const appendBook = (book) => {
   const bookElement = document.createElement('div');
   bookElement.id = `book-${book.id}`;
+  bookElement.className = 'book';
   bookElement.innerHTML = `
-    <p>${book.title}</p>
-    <p>${book.author}</p>
-    <button id="remove-${book.id}">Remove</button>
-    <hr>
+    <p>${book.title} by ${book.author}</p>
+    <button id="remove-${book.id}" class="remove">Remove</button>
   `;
 
   booksSection.appendChild(bookElement);
 };
 
-books.forEach((book) => {
+library.forEach((book) => {
   appendBook(book);
-  addRemoveListener(book.id);
+  addRemoveListener(book);
 });
 
 addBtn.addEventListener('click', (e) => {
   e.preventDefault();
   const bookTitle = document.getElementById('title').value;
   const bookAuthor = document.getElementById('author').value;
-  const newBook = addBook(uid(), bookTitle, bookAuthor);
-  appendBook(newBook);
-  addRemoveListener(newBook.id);
+  const book = new Book(uid(), bookTitle, bookAuthor);
+  book.addBook();
+  appendBook(book);
+  addRemoveListener(book);
 });
