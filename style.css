@@ -15,6 +15,7 @@ body {
 
 h1 {
   text-align: center;
+  font-size: 32px;
   color: rgb(54, 153, 195);
 }
 
@@ -39,12 +40,9 @@ h2 {
 }
 
 .empty {
+  display: flex;
   justify-content: space-around;
   align-items: center;
-}
-
-.show {
-  display: flex;
 }
 
 .hide {
@@ -57,8 +55,24 @@ h2 {
   align-items: center;
   padding: 0 15px;
   margin-bottom: 20px;
-  box-shadow: 0 8px 16px 0 rgba(54, 153, 195, 0.2);
+  box-shadow: 0 8px 16px 0 rgba(54, 153, 195, 0.3);
   border-radius: 16px;
+  transition: 0.3s;
+}
+
+.book span {
+  font-size: 13px;
+  color: rgb(54, 153, 195);
+  transition: 0.3s;
+}
+
+.book:hover {
+  background-color: rgb(54, 153, 195);
+  color: #fff;
+}
+
+.book:hover span {
+  color: #fff;
 }
 
 .book p {
@@ -66,18 +80,26 @@ h2 {
 }
 
 .remove {
-  padding: 5px 10px;
-  background: none;
-  border: 2px solid rgb(54, 153, 195);
-  color: rgb(54, 153, 195);
+  padding: 5px 15px;
+  background-color: #fff;
+  border: none;
+  color: #e23d32;
+  color: #fff;
   cursor: pointer;
   border-radius: 10px;
   transition: 0.3s;
 }
 
+.fa-trash-can {
+  color: #e23d32;
+}
+
 .remove:hover {
+  background-color: #e23d32;
+}
+
+.remove:hover .fa-trash-can {
   color: #fff;
-  background-color: rgb(54, 153, 195);
 }
 
 hr {
@@ -88,20 +110,23 @@ hr {
 }
 
 form {
-  width: 30%;
+  width: 25%;
   margin: 0 auto;
 }
 
 input {
   width: 100%;
-  padding: 10px;
+  padding: 12px;
   margin-bottom: 20px;
   border-radius: 10px;
+  border: none;
+  box-shadow: 0 8px 16px 0 rgba(255, 255, 255, 0.2);
+  font-family: 'Montserrat', sans-serif;
 }
 
 #add-btn {
   float: right;
-  padding: 7px 15px;
+  padding: 7px 20px;
   background-color: rgb(54, 153, 195);
   border: 2px solid rgb(54, 153, 195);
   color: #fff;
@@ -111,6 +136,10 @@ input {
 }
 
 #add-btn:hover {
-  background-color: rgb(128, 128, 128);
-  border-color: rgb(128, 128, 128);
+  background-color: #808080;
+  border-color: #808080;
+}
+
+.fa-book {
+  color: rgb(54, 153, 195);
 }

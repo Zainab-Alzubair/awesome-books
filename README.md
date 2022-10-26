@@ -10,7 +10,7 @@
 
 ## Live Demo
 
-![image](https://user-images.githubusercontent.com/37116322/197812247-6b16d25a-3d0f-44cc-9432-e87be7d30494.png)
+![image](https://user-images.githubusercontent.com/37116322/197976653-448a22b4-de5a-4d4e-a6e8-38d991a099af.png)
 
 ## Getting Started
 
@@ -45,7 +45,7 @@ To get a local copy up and running follow these simple steps.
 
 👤 **Zainab**
 
-- GitHub: [@Zainab-Alzubair](https://github.com/Shisui6)
+- GitHub: [@Zainab-Alzubair](https://github.com/Zainab-Alzubair)
 - LinkedIn: [LinkedIn](https://www.linkedin.com/in/zainab-al-zubair-bb6777168/)
 
 ## 🤝 Contributing
